@@ -13,6 +13,9 @@ public class User {
     @Column(name = "id")
     private long id;
 
+    @Column(name = "login")
+    private String login;
+
     @Column(name = "name")
     private String name;
 
@@ -31,12 +34,21 @@ public class User {
     public User() {
     }
 
-    public User(String name, String lastName, String email, Date dateOfRegistration, String password) {
+    public User(String login, String name, String lastName, String email, Date dateOfRegistration, String password) {
+        this.login = login;
         this.name = name;
         this.lastName = lastName;
         this.email = email;
         this.dateOfRegistration = dateOfRegistration;
         this.password = password;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public long getId() {
@@ -91,6 +103,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
+                ", login='" + login + '\'' +
                 ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +

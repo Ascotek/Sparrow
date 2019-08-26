@@ -2,7 +2,6 @@ package dao;
 
 import model.User;
 
-
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
@@ -22,8 +21,12 @@ public class UserDAO extends AbstractDAO {
         Query query = entityManager.createQuery("select u from User u where u.name = :name", User.class);
         return query.setParameter("name", name).getResultList();
     }
-    public User findEmail(String email){
+    public User getUserByEMail(String email){
         TypedQuery<User> query = entityManager.createQuery("select u from User u where u.email = :email", User.class);
         return query.setParameter("email", email).getSingleResult();
+    }
+    public User getUserByLogin(String login){
+        TypedQuery<User> query = entityManager.createQuery("select u from User u where u.login = :login", User.class);
+        return query.setParameter("login", login).getSingleResult();
     }
 }
